@@ -1,0 +1,22 @@
+1. sudo apt-get install name_of_package
+Commans to install packages/programs through the terminal.
+
+2. w
+shows who is logged on the computer and for how long
+
+3. top -c
+similiar to task manager in windows.
+PID is the process Identification for a program running
+
+4. kill 1060 (will kill the process with the id 1060)
+
+5. netstat -tupln
+   sudo netstat -tupln
+tcp / udp / program / listening / numberically
+
+6. sudo apt-get install htop
+
+htop
+displays everything going on in the  computer.
+
+

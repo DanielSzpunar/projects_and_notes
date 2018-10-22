@@ -1,0 +1,41 @@
+1. clear
+clears the screen 
+
+2. ctrl + a
+move to beginning of the line.
+
+3. ctrl + e
+move to the end of the line.
+
+4. # 
+creates a comment and will not be run by the shell.
+
+5. up & down key for scrolling through your searches.
+
+6. ctrl + r (followed by command to enter reverse history search.)
+To look for the most recent search using that command.
+
+7. ctrl + c
+interupt the command you were using.
+
+8. ln -s original.txt original_link.txt
+the link is not a copy but a symbolic link.
+Think of allowing someone to access a file but not allowing them
+to acces the original this way the original stays safe with different
+user privledges.
+
+9. head file.txt
+will display the first 10 lines of a file.
+(Remember cat? It displays the whole file.)
+
+10. tail file.txt
+will display the last 10 lines of a file.
+
+11. shutdown -r +30
+restart the computer in 30 minutes.
+
+12. shutdown -h +60
+turn off the computer in one hour.
+
+13. poweroff
+Turn off the computer

@@ -1,0 +1,10 @@
+git clone git@github.com:DanielSzpunar/projects_and_notes.git
+to create the clone.
+
+
+
+git status
+
+git commit -m "message of commit."
+
+git push

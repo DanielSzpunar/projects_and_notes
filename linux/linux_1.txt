@@ -1,0 +1,88 @@
+Linux Notes 1:
+
+0. man commandname
+ie. man ls
+prints the manual for ls
+
+1. pwd
+print working directory
+displays where you are within the folder structure starting from root.
+
+2. ls
+list directory
+lists all the files in the directory.
+
+3. ls -l 
+displays long list with more info
+li -a 
+displays hidden files
+
+4. ls -la
+is your friend it displays both hidden and long version.
+
+5. cd ..
+to move back a folder
+
+6. cd foldername
+to move into folder foldername
+
+7. cd foldername/anotherfoldername 
+to move two folders forward.
+
+8. cd /
+to move into root directory the base 
+
+9. cd
+cd ~
+to users home directory
+~ (tilda) refers to users home.
+
+10. touch filename.extention
+creates an empty file.
+
+11. cat filename.txt
+concatenates the contents of the file onto the terminal.
+
+12. mkdir directoryname
+Make a folder/directory nameddirectoryname
+
+13. mv source.txt target.txt
+rename the file source.txt to target.txt in the same directory
+
+14. mv source.txt differentfolder/
+Move the file source.tzt to the folder differentfolder.
+
+15. rm file.txt
+removes the file.txt (deleted)
+
+16. rmdir directoryname
+removes a directory
+
+17. rm -r directoryname
+Deletes a directory and its contents.
+-r option mean recursively.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
