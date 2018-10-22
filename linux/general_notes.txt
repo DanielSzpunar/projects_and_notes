@@ -1,10 +1,66 @@
 git clone git@github.com:DanielSzpunar/projects_and_notes.git
-to create the clone.
+ to create the clone.
 
 
 
-git status
+
+
+git status 
+
+
 
 git commit -m "message of commit."
 
 git push
+
+
+notes 1:
+man
+pwd
+ls
+ls -l
+ls -a
+ls -la
+cd ..
+cd /
+cd 
+cd ~
+touch 
+cat
+mkdir
+mv source.txt target.txt
+rm file.xt
+rmdir
+rm -r directory
+
+notes 2:
+clear
+ctrl + a
+ctrl + e
+#
+ctrl + r
+ctrl + c
+ln -s
+head file.txt
+tail file.txt
+shutdown -r + 30
+shutdown -h + 60
+poweroff
+
+notes 3:
+sudo apt-get install name_pf_package
+w
+top -c
+kill 1010 
+netstat -tuplin
+htop
+
+
+notes 4:
+
+
+
+
+
+
+
