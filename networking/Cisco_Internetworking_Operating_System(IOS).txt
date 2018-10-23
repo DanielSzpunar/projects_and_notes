@@ -1,0 +1,281 @@
+Cisco's Internetworking Operating System (IOS):
+------------------------------------------------------
+Chapter 6:
+
+
+
+Connecting to a Cisco Router:
+
+Option 1:
+The first place you would connect is the console port.
+Default  new ISR routers use cisco for password and username.
+Option 2:
+Auxiliary port, similar to console port. However, you can enter modem commands  so that a model can be connected to the router (outside the network.)
+Option 3: 
+Through Telnet (in -band): Configuring the router through the network. It's a less secure version of SSH.
+
+Bringing up a router:
+First thing: It runs Power On Self Test (POST)
+Next: If it passes, it will look for and load CISCO IOS from flash memory, if an IOS is present.
+Lastly the IOS loads and looks for a valid configuration - the startup-config
+that is stored in nonvolatile ram, or NVRAM for short.
+
+Entering the Command Line Interface (CLI):
+Pressing <enter> after interface status messages appear the Router>
+prompt will appear.  This is called the user exec mode (user mode)
+Exec mode is usually used for checking statistics but is the stepping stone for priviledged mode.
+
+**You can only view and change the configuration of a CISCO router in privledged exec mode which you can enter with the enable command:
+
+Router>enable
+Router#
+
+the Router# prompt indicates priviledged mode.
+
+Router> disable
+returns to usermode from priviledged mode.
+
+logout will exit the console from either mode.
+
+
+Overview of Router Modes:
+
+To make global changes to the router type:
+configure terminal (config t)
+This will all you to make changes to the running-config.
+A global command is set once and affects the entire router.
+
+If you type config from the priviledged mode prompt and then press enter to take the default of terminal:
+
+Router#config
+configuring from terminal, memory, or network [terminal]? [press enter]
+Enter configuration commands, one per line. End with CTRL/Z.\
+Router(config)#
+
+CLI Prompts:
+
+Interfaces:
+To make changes to an interface, you use the interface command from the global configuration mode:
+
+Router(config)# interface ?
+
+? will list all the available commands /options / info.
+
+Router(config)#interface fastEthernet 0/0
+Router(config-if)#
+
+
+Router(config-if)# This is interface configuration mode.
+Router(config-subif)#
+sub if is sub interface mode; More in chapter 11.
+
+Line Commands:
+To configure user-mode passwords use the line command.
+
+Router#config t
+Enter configuration commands, one per line. End with CTRL/Z.
+Router(config)#line ?
+<0-337> First Line number
+aux Auxillary line
+console Primary terminal line
+tty Terminal controller
+vty Virtual terminal
+
+The --line console 0 command is known as a major commmand (also called a global command), 
+and any command typed from the (config-line) prompt is known as a subcommand.
+
+Routing Protocol Configurations:
+To configure routing protocols such as RIP and EIGRIP, youll need to get to the prompt Router(config-router#):
+
+Router#config t
+Enter configuration commands, one per line. End with CTNL/Z.
+Router(config)#router rip
+Router(config)#version 2
+Router(config-router)#
+
+Mode                      Definition
+
+User EXEC mode            	Limited to basic monitoring commands
+
+Privileged EXEC mode      	Provides access to all other router commands
+
+Global configuration mode 	Commands that affect the entire system
+
+Specific configuration modes    Commands that affect interfaces/processes only
+
+Setup mode 			Interactive configuration dialog
+
+
+
+
+To get a list of possible commands type a letter than a ?
+ex. 
+Router#c?
+
+Router#show version
+Will provide basic configuration for the system hardware as well as
+the software version and the boot images.
+
+Router and Switch Adminsitrative COnfigurations:
+Hostnames
+Banners
+Passwords
+Interface Descriptions
+
+These commands are the same on both a cisco router and  cisco switch.
+
+Hostnames:
+----------------
+Router#config t
+Enter configuration commands, on per line. End with CNTL/Z
+Router(config)# hostname Todd
+Todd(config)# hostname Atlanta
+Atlanta(config)# hostname Todd
+Todd(config)#
+
+Hostnames should be identifiable to either location or user. This
+will come in handy and make it recognizable.
+
+Banners:
+------------------
+4 types of banners; exec process creation banner, incoming terminal line banner, login banner, and message of the day banner.
+
+
+MOTD banner is the most extensively used banner.
+
+Todd(config)#banner motd ?
+LINE c banner-text c, where 'c' is a delimiting character
+Todd(config)#banner motd #
+Enter TEXT message. End with the character '#'.
+$ Acme.com network, then you must disconnect immediately.
+#
+Todd(config)#^Z
+Todd#
+00:25:12: %SYS-5-CONFIG_I: Configured from console by
+  console
+Todd#exit
+Router con0 is now available
+Press RETURN to get started.
+If you are not authorized to be in Acme.com network, then you
+must disconnect immediately.
+Todd#
+
+Setting Passwords:
+Five passwords are used to secure your Cisco routers: 1.Console
+2.auxiliary 3.telnet 4.enable password and 5. enable secret;
+
+last-resort:
+Allows you to still enter the router if you set up authentication through
+a TACACS server and its not available. But it isnt used if the TACACS 
+server is working.
+
+password:
+Sets the enable password on older pre- 10.3 systems, and isn't ever used
+if an enable secret is set.
+
+secret:
+This is the newet, encrypted password that overrides the enable password
+if its set.
+
+use-tacacs
+This tells the router to authenticate through a TACACS server. It's convientient if you have anywhere from a dozen+ routers.You only 
+have to change the password once.
+
+
+Setting the enable passwords:
+Todd(config)# enable secret todd
+Todd(config)# enable password todd
+
+Do not use enable password unless using legacy routers.
+Use enable secret instead.
+
+
+****User-mode passwords are assigned by using the line command****
+Todd(config)#line ?
+<0-337> First line number
+aux Auxiliary line
+console Primary terminal line
+tty Terminal controller
+vty Virtual terminal
+
+aux: Sets the user-mode password for the auxilliary port.used for attaching a modem to a router.
+
+console: Sets a console user mode password.
+
+vty:
+Sets a Telnet password on the router. If this password isn't set, then
+Telnet can't be used by default.
+
+
+Auxiliary Password:
+To configure auxiliary password, go into the global configuration mode
+and type line aux ?. You can see here that you only get a choice
+of 0-0 (thats because theres only one port.)
+Todd#config t
+Enter configuration commands, one per line. End with CNTL/Z.
+Todd(config)#line aux ?
+<0-0> First Line number
+Todd(config-line)#login
+% Login disabled on line 1, until 'password' is set
+Todd(config-line)#password aux
+Todd(config-line)#login
+
+Telnet Password:
+To set the user-mode password for Telnet access into the router, use the
+line vty command. Routers that aren't running the Enterprise edition of 
+
+
+Setting up Secure Shell (SSH)
+Why SSH? Secure Shell uses encryption keys to send data so that your
+username and password are not sent in the clear.
+
+Steps To Setting Up SSH:
+1. Set Your hostname:
+Router(config)#hostname Todd
+
+2. Set the domain name (both the hostname and domain name are required
+for the encryption keys to be generated):
+Todd(config)#ip domain-name Lammle.com
+
+3. Set the username to allow SSH client access
+Todd(config)#username Todd password Lammle
+
+4. Generate the encryption keys for securing session:
+Todd(config)#crypto key generate rsa general-keys modulus ?
+<360-2048> size of the key modulus [360-2048]
+Todd(config)#crypto key generate rsa general-keys modulus 1024
+The name for the keys will be: Todd.Lammle.com
+% The key modulus size is 1024 bits
+% Generating 1024 bit RSA keys, keys will be non-exportable...[OK]
+*June 24 19:25:30:035: %SSH-5-ENABLED: SSH 1.99 has been enabled
+
+5. Enable SSH version 2 on the router; although this isnt mandatory
+it is highly suggested:
+Todd(config)#ssh version 2
+
+6. Connect to the VTY lines of the router:
+Todd(config)#line vty 0 1180
+
+7. Last, configure SSH and then Telnet as access protocols:
+Todd(config-line)#transport input ssh telnet
+
+**If you do not use the keyword telnet at the end of the command string,
+then only SSH will workk on the router, I am not suggesting you use either way, but just understand that SSH is more secure than Telnet.
+
+
+
+
+
+
+
+
+
+Commands: 
+setup
+enters setup mode, can only be entered from privledged mode. Generally not very helpful.
+
+Ctrl + c
+to exit setup mode.
+
+
+
