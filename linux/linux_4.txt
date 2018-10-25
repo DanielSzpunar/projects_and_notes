@@ -1,0 +1,46 @@
+&&
+----
+prog1 && prog2
+if prog1 works than prog2 will execute.
+if prog1 does not work than prog2 will not execute
+
+ex.
+cat file.txt && echo "successful"
+if file.txt cannot be found or concatenized than successful will
+not be echoed into the terminal. 
+
+sort
+cat file.txt | sort -bf
+this will return the file.txt sorted alphabetically.
+
+
+cat file.txt | uniq
+will return the contents of the file but ignore duplicate lines.
+
+wc file.txt
+returns lines words bytes of a file.
+wc -l
+will return lines
+
+wc -w 
+will return words
+
+wc -c 
+wc -m
+will return the number of bytes in the file.
+
+grep
+grep wordToSearch ./*
+search all files in this directory for wordToSearch
+
+grep -n wordToSearch file.txt
+search for the word wordToSearch in file.txt and list the results with 
+the line number -n
+
+
+grep wordToSearch ./* | uniq | cut -d: -f1
+get regular of expression of wordToSearch in all directories pipe it
+to uniq so we get no repeats and cut at the delimiter of ":" and return
+the first part prior to delimiter.
+
+
