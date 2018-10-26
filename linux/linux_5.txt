@@ -1,0 +1,30 @@
+Linux File Permissions:
+
+chmod 777 fileName.txt
+everyone has full permission for this file.
+001 = 1 --x
+010 = 2 -w- 
+011 = 3 -wx
+100 = 4 r--
+101 = 5 r-x
+110 = 6 rw-
+111 = 7 rwx
+
+For a file:
+r read - you may view the contents of the file.
+w write - you may change the contents of the file.
+x execute - you may execute or run the file if it is a program or script.
+ 
+For a Directory:
+r - you have the ability to read the contents of the directory (ie do an ls)
+w - you have the ability to write into the directory (ie create files and directories)
+x - you have the ability to enter that directory (ie cd)
+
+
+chmod [who][+,-,=][permissions] filename
+chown username:groupname directoryName
+
+Access Control:
+
+
+
