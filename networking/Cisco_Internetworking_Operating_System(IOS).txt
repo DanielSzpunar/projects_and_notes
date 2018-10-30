@@ -286,9 +286,16 @@ enters setup mode, can only be entered from privledged mode. Generally not very 
 Ctrl + c
 to exit setup mode.
 
-To save changes you must exit global mode (config)
+To save changes you must exit global mode (config) and go back to privledge mode.
 then type:
-copy running-config
+copy running-config startup-config
+then hit enter when it asks you the destination filename.
+
+
+To see the running configuration file:
+show run.
+
+
 
 
 
