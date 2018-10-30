@@ -96,10 +96,19 @@ Router(config-router)#
 Mode                      Definition
 
 User EXEC mode            	Limited to basic monitoring commands
+Router>
+This is open on start up of terminal.
+
 
 Privileged EXEC mode      	Provides access to all other router commands
+Router#
+type enable to enter this mode. and disable to revert back to user mode.
+
 
 Global configuration mode 	Commands that affect the entire system
+Router(config)#
+type configure terminal
+to revert back to privledge mode type end exit  or ctrl + z
 
 Specific configuration modes    Commands that affect interfaces/processes only
 
@@ -116,7 +125,7 @@ Router#show version
 Will provide basic configuration for the system hardware as well as
 the software version and the boot images.
 
-Router and Switch Adminsitrative COnfigurations:
+Router and Switch Adminsitrative Configurations:
 Hostnames
 Banners
 Passwords
@@ -174,7 +183,7 @@ Sets the enable password on older pre- 10.3 systems, and isn't ever used
 if an enable secret is set.
 
 secret:
-This is the newet, encrypted password that overrides the enable password
+This is the newest, encrypted password that overrides the enable password
 if its set.
 
 use-tacacs
@@ -276,6 +285,11 @@ enters setup mode, can only be entered from privledged mode. Generally not very 
 
 Ctrl + c
 to exit setup mode.
+
+To save changes you must exit global mode (config)
+then type:
+copy running-config
+
 
 
 
